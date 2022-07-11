@@ -50,6 +50,13 @@ export default defineConfig({
   build: {
     // 8 KB 以下 则行内， 以上，则单独打包
     assetsInlineLimit: 8 * 1024
+  },
+  optimizeDeps: {
+    // 预构建
+    // entries: ['./src/main.tsx']
+    // 强制预构建 
+    // 适用场景：动态import 动态 import 的路径只有运行时才能确定，无法在预构建阶段被扫描出来
+    include: ['lodash-es']
   }
 })
 

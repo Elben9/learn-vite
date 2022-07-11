@@ -2,6 +2,7 @@
 import styles from './index.module.scss'
 import React, { useEffect } from 'react'
 import { devDependencies } from '../../../package.json'
+import { debounce } from 'lodash-es'
 
 import ImgSrc from '@assets/kdy.jpeg'
 
@@ -26,14 +27,24 @@ window.addEventListener('message', e => {
 //   )
 // }
 
+function c () {
+  console.log(1234)
+}
+
+function demo () {
+  debounce(c, 3000)
+}
+
 export function Header () {
   useEffect(() => {
     const img = document.getElementById('logo') as HTMLImageElement
     img.src = ImgSrc
   }, [])
+
   return (
     <div>
       <img id="logo" src={ImgSrc} />
+      <div style={{width: '100px', height: '100px', background: 'red'}} onClick={demo}>测试lodash-es</div>
       <img src={new URL('../../assets/kdy.jpeg', import.meta.env.VITE_IMG_BASE_URL).href} alt="" />
     </div>
   )
